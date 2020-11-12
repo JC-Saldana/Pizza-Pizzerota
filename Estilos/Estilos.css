@@ -1,0 +1,78 @@
+*{
+ 	margin:0px;
+ 	padding:0px;
+ 	font-family: sans-serif;
+}
+/* Cómún a todas las pestañas */
+body {
+ 	margin-left: 50%;
+ 	margin-top: 10%;
+ 	width: 500px;
+ 	height: 600px;
+	padding-top: 3%;
+	background-image: url("../img/pizza.jpg");
+	background-repeat: no-repeat; 
+	background-size: 3840px 2160px;
+	background-color: black;
+	background-attachment: fixed;
+	background-position: center;
+}
+.datosInput {
+	margin-top: 5px;
+	margin-right: 80px;
+	float: right;
+}
+.datosText {
+	clear: both;
+	margin-top: 5px;
+	float: left;
+}
+label {
+	margin-left: 3px;
+}
+input {
+	margin-left: 5px;
+}
+.tamaño {
+	float: left;
+}
+.complemento {
+	margin-right: 100px;
+	float: right;
+}
+.complemento.input {
+padding-top: 5px;
+}
+button {
+	margin-top:4%;
+	border-radius: 6px;
+	font-weight: bold;
+	color:white;
+	background:#406C7E;
+	text-decoration: none;
+	width: 200px;
+	height: 30px;
+	float: right;
+}
+button:hover{
+	background-color: #669A94;
+}
+#fondo {
+	background-color: white;
+	padding: 18px;
+	border-radius: 10px;
+}
+sup:not(#exception){
+	color: gray;
+	float: right;
+	margin-left: 20px;
+}
+#exception {
+	color: gray;
+	float: right;
+	margin-right: 195px;
+}
+#enviado {
+	margin:auto;
+	margin-top: 15%;
+}

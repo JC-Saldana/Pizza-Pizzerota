@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang = "esp">
+<head>
+	<meta charset="UTF-8">
+	<title>Pizzería Pizzerota</title>
+	<script type="text/javascript" src="JS/JavaScript.js"></script>
+	<link rel="stylesheet" href="Estilos/Estilos.css">
+</head>
+
+<!-- Body, ejecuta función con cada click -->
+
+<body onclick="actualiza()">
+	<div id="fondo">
+	<h1>Pizza al gusto</h1><br>
+
+	<!-- Formulario, envía si la función devuelve true -->
+
+	<form name="formulario" onsubmit="return revisa()"> 
+
+		<!-- Datos -->
+
+		<h3>Facilítanos tus datos: </h3><br>
+
+		<label for="Nombre" class="datosText">Nombre</label>
+		<input type="text" name="Nombre" id="nombre" class="datosInput" placeholder=" ej: Peppe Pizzo" required><br>
+
+		<label for ="Dirección" class="datosText">Dirección</label>
+		<input type="text" name="Dirección" id="dirección" class="datosInput" placeholder=" ej: Calle Pizza" required><br>
+
+		<label for ="Teléfono" class="datosText">Teléfono</label>
+		<input type="tel" name="Teléfono" id="teléfono" class="datosInput" placeholder=" ej: 123456789"
+		pattern="[0-9]{3}[0-9]{3}[0-9]{3}" required><br>
+
+		<label for ="Email" class="datosText">Email</label>
+		<input type="email" name="Email" id="email" class="datosInput" placeholder=" ej: email@gmail.com" required><br><br><br><br>
+
+		<!-- Tamaño -->
+
+		<div class="tamaño">
+
+		<h3>Tamaño: </h3><br>
+
+		<input type="radio" name="tamaño" id="pequeña" value="5" required>
+		<label for="pequeña">Pequeña <sup>+5</sup></label><br>
+
+		<input type="radio" name="tamaño" id="mediana" value="10">
+		<label for="mediana">Mediana <sup>+10</sup></label><br>
+
+		<input type="radio" name="tamaño" id="grande" value="15">
+		<label for="grande">Grande <sup>+15</sup></label>
+
+		</div>
+
+		<!-- Complementos -->
+
+		<div class="complemento">
+		<h3 >Complementos: </h3><br>
+
+		<input type="radio" name="complemento" id="papas" value="2" required>
+		<label for="papas">Papas fritas <sup>+2</sup></label><br>
+
+		<input type="radio" name="complemento" id="lechuga" value="3">
+		<label for="lechuga">Lechuga frita <sup>+3</sup></label><br>
+
+		<input type="radio" name="complemento" id="pan" value="1">
+		<label for="pan">Pan también frito <sup> +1</sup></label><br><br>
+		</div><br><br><br><br><br><br><br>
+
+		<!-- Ingredientes -->
+
+		<h3>Selecciona ingredientes:<sup id="exception">1€/ud</sup></h3><br>
+
+ 		<table id="tabla">
+ 			<tr>
+ 				<td><input type="checkbox" name="ingrediente" id="aceitunas negras" value="1">
+					<label for="aceitunas negras">Aceitunas negras</label>
+				</td>
+ 				<td>
+ 					<input type="checkbox" name="ingrediente" id="pollo marinado" value="1">
+					<label for="pollo marinado">Pollo marinado</label>
+ 				</td>
+ 				<td>
+ 					<input type="checkbox" name="ingrediente" id="pulled pork" value="1">
+					<label for="pulled pork">Pulled Pork</label><br>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td><input type="checkbox" name="ingrediente" id="queso provolone" value="1">
+					<label for="queso provolone">Queso provolone</label>
+				</td>
+ 				<td>
+ 					<input type="checkbox" name="ingrediente" id="tomate natural" value="1">
+					<label for="tomate natural">Tomate natural</label>
+ 				</td>
+ 				<td>
+ 					<input type="checkbox" name="ingrediente" id="queso especial" value="1">
+					<label for="queso especial">Queso especial</label><br>
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td><input type="checkbox" name="ingrediente" id="Piña" value="1">
+					<label for="Piña"><del>Piña <sup>no lo hagas...</sup></del></label>
+				</td>
+ 				<td>
+ 					<input type="checkbox" name="ingrediente" id="5 quesos" value="1">
+					<label for="5 quesos">5 Quesos</label>
+ 				</td>
+ 				<td>
+ 					<input type="checkbox" name="ingrediente" id="bacon" value="1">
+					<label for="bacon">Bacon</label><br>
+ 				</td>
+ 			</tr>
+ 		</table>
+ 		
+ 		<!-- Botón de enviar -->
+
+ 		<button type="submit">Realizar pedido</button><br>
+
+ 		<!-- Precio que se actualiza -->
+
+ 		<b id="precio">Total: 0€</b>
+
+	</form>
+	</div>
+</body>
+</html>
