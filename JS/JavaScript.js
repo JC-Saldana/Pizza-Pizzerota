@@ -19,6 +19,44 @@
 
 	*/
 
+	/* AJAX JSON START */
+
+	const URL_DESTINO = "http://localhost:5500/"
+	const RECURSO = "ingredientes.json"
+
+    function enviarPeticionAsincrona() {
+
+        let xmlHttp = new XMLHttpRequest()
+
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    procesarRespuesta(this.responseText)//Obtenemos el valor en texto
+                } else {
+                    alert("No encontrado!")
+                }
+            }
+        }
+
+        xmlHttp.open('GET', URL_DESTINO + RECURSO)
+        xmlHttp.send(null)
+    }
+
+	function procesarRespuesta(jsonDoc) {
+
+        var objetoJson = JSON.parse(jsonDoc)
+
+        var tam = ""
+        var arrayTamaños = objetoJson.PIZZA.TAMAÑOS
+        
+        for(let TAMAÑOS of arrayTamaños){
+			tam += TAMAÑOS
+		}
+        resultadoBusqueda.innerHTML = tam
+    }
+
+	/* AJAX JSON END*/
+
 	function actualiza() {
 
 	/* Calcula precio con cada click */ 

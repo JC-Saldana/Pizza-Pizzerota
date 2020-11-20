@@ -1,0 +1,22 @@
+{
+    "PIZZA": {
+        "PRECIOS": {
+            "Barbacoa" : { 
+                "familiaNumerosa": 1,
+                "niño": 2,
+                "estudiante": 5
+            },
+            "Quesos" : { 
+                "familiaNumerosa": 4,
+                "niño": 3,
+                "estudiante": 6
+            },
+            "Carbonara" : { 
+                "familiaNumerosa": 2,
+                "niño": 3,
+                "estudiante": 1
+            }
+        },
+        "TAMAÑOS": ["pequeña", "mediana", "grande"]
+    }
+}
