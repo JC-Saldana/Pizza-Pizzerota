@@ -36,10 +36,21 @@
 
 		<!-- Tamaño -->
 
-		<div class="tamaño">
-
+		<div class="tamaño" >
 		<h3>Tamaño: </h3><br>
+		<div id="tamaño"></div>
+		<div class="opcionesTamaño">
 
+		<input type="radio" class="?" required>
+		<label for="pequeña" class="?">?</label><br>
+
+		<input type="radio" class="?">
+		<label for="mediana" class="?">?</sup></label><br>
+
+		<input type="radio" class="?">
+		<label for="grande" class="?">?</label>
+		
+<!--
 		<input type="radio" name="tamaño" id="pequeña" value="5" required>
 		<label for="pequeña">Pequeña <sup>+5</sup></label><br>
 
@@ -48,9 +59,10 @@
 
 		<input type="radio" name="tamaño" id="grande" value="15">
 		<label for="grande">Grande <sup>+15</sup></label>
-
+-->		
 		</div>
-
+		</div>
+	
 		<!-- Complementos -->
 
 		<div class="complemento">
@@ -112,17 +124,18 @@
  			</tr>
  		</table>
  		
- 		<!-- Botón de enviar -->
-
- 		<button type="submit">Realizar pedido</button><br>
-
+		 <!-- Botón de enviar -->
+		 
+		<button type="submit">Realizar pedido</button>
+		<button type="button" id="btnBuscarAsincrono">Pedir la carta</button><br>
+ 		
  		<!-- Precio que se actualiza -->
 
  		<b id="precio">Total: 0€</b>
 
 	</form><br>
 	<table id="resultadoBusqueda"></table>
-	<button id="btnBuscarAsincrono" onclick="enviarPeticionAsincrona()">Buscar asíncrono</button>
+	
 	</div>
 	
 </body>

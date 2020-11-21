@@ -19,6 +19,10 @@
 
 	*/
 
+	window.onload = function() {
+		document.getElementById("btnBuscarAsincrono").addEventListener("click", enviarPeticionAsincrona)
+	}
+
 	/* AJAX JSON START */
 
 	const URL_DESTINO = "http://localhost:5500/"
@@ -45,14 +49,62 @@
 	function procesarRespuesta(jsonDoc) {
 
         var objetoJson = JSON.parse(jsonDoc)
-
-        var tam = ""
         var arrayTamaños = objetoJson.PIZZA.TAMAÑOS
-        
-        for(let TAMAÑOS of arrayTamaños){
-			tam += TAMAÑOS
+		
+		/*for(let i of arrayTamaños){
+			
+			var input = document.createElement("input")
+			
+			input.setAttribute("type", "radio")
+			input.setAttribute("id", i)
+			input.setAttribute("name", "tamaño")
+			input.setAttribute("value", "5")
+			document.getElementById("tamaño").appendChild(input)
+			
+			console.log(input)
+
+			var espacio = document.createElement("text")
+			espacio.innerHTML = ("&nbsp;")
+			document.getElementById("tamaño").appendChild(espacio)
+			
+			var label = document.createElement("label")
+			label.innerHTML = (i)
+			label.setAttribute("for", i)
+			document.getElementById("tamaño").appendChild(label)
+
+			var p = document.createElement("p")
+			document.getElementById("tamaño").appendChild(p)
+		}*/
+
+        for(let i of arrayTamaños){
+			
+			var input = document.createElement("input")
+			
+			input.setAttribute("type", "radio")
+			input.setAttribute("id", i)
+			input.setAttribute("name", "tamaño")
+			input.setAttribute("value", "5")
+			document.getElementById("tamaño").appendChild(input)
+			
+			console.log(input)
+
+			var espacio = document.createElement("text")
+			espacio.innerHTML = ("&nbsp;")
+			document.getElementById("tamaño").appendChild(espacio)
+			
+			var label = document.createElement("label")
+			label.innerHTML = (i)
+			label.setAttribute("for", i)
+			document.getElementById("tamaño").appendChild(label)
+
+			var p = document.createElement("p")
+			document.getElementById("tamaño").appendChild(p)
+
+			var borra = document.getElementsByClassName("opcionesTamaño")
+			for (let i = 0; i < borra.length; i++) {
+				borra[i].remove()
+			}
 		}
-        resultadoBusqueda.innerHTML = tam
     }
 
 	/* AJAX JSON END*/
