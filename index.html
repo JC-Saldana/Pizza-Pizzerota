@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Pizzeria Pizzerota</title>
+	<title>Tarea 4 DWEC - Pizzeria Vivaldi</title>
 	<!-- JS -->
 	<script type="text/javascript" src="js/onload.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
@@ -16,68 +16,67 @@
 
 <!-- Body, ejecuta funcion con cada click -->
 
-<body id="body">
+<body id="body" class="scale-in-center">
 	<div id="fondo">
-		<h1>Pizza al gusto</h1><br>
+
+		<h1>¡¡¡¡Bienvenido a Pizzería Brave!!!!</h1><br>
 
 		<!-- Formulario, envia si la funcion devuelve true -->
 
 		<form id="formularioID" name="formulario" id="formularioID"
-			action="https://pizzeriavivaldi.es/receiveOrder.php?" method="POST">
-			<div id="fila1">
-				<!-- Datos -->
-				<div>
-					<h3>Facilitanos tus datos: </h3><br>
+			action="http://127.0.0.1:5500/receiveOrder.html?" method="POST">
+			
+			<!-- Datos -->
+			<h2>Facilítanos tus datos: </h2><br>
+			<div id="divDatosID">
+				
+				<div id="datosIzquierda">
+				<label for="Nombre" class="datosText">Nombre</label>
+				<input type="text" name="Nombre" id="nombre" class="datosInput" placeholder=" ej: Peppe Pizzo"><br>
 
-					<label for="Nombre" class="datosText">Nombre</label>
-					<input type="text" name="Nombre" id="nombre" class="datosInput" placeholder=" ej: Peppe Pizzo"><br>
+				<label for="Direccion" class="datosText">Direccion</label>
+				<input type="text" name="Direccion" id="direccion" class="datosInput"
+					placeholder=" ej: Calle Pizza"><br>
 
-					<label for="Direccion" class="datosText">Direccion</label>
-					<input type="text" name="Direccion" id="direccion" class="datosInput"
-						placeholder=" ej: Calle Pizza"><br>
-
-					<label for="CodigoPostal" class="datosText">Código Postal</label>
-					<input type="text" name="CodigoPostal" id="codPostal" class="datosInput"
-						placeholder=" ej: 28001"><br>
-
-					<label for="Telefono" class="datosText">Telefono</label>
-					<input type="tel" name="Telefono" id="telefono" class="datosInput" placeholder=" ej: 932556688"><br>
-
-					<label for="Email" class="datosText">Email</label>
-					<input type="email" name="Email" id="email" class="datosInput"
-						placeholder=" ej: email@gmail.com"><br><br><br><br>
+				<label for="CodigoPostal" class="datosText">Código Postal</label>
+				<input type="text" name="CodigoPostal" id="codPostal" class="datosInput"
+					placeholder=" ej: 28001"><br>
 				</div>
+				<div id="datosDerecha"></div>
+				<label for="Telefono" class="datosText">Telefono</label>
+				<input type="text" name="Telefono" id="telefono" class="datosInput" placeholder=" ej: 932556688"><br>
 
-				<!-- Tamano -->
-
-				<div class="tamano">
-					<h3>Tamano: </h3><br>
-					<div id="tamano"></div>
-					<div class="opcionesTamano">
-
-						
-
-					</div>
-				</div>
-
-				<!-- Complementos -->
-
-				<div class="complemento">
-					<h3>Complementos: </h3><br>	
-					<div id="complemento">
-					</div>
-				</div>
-
+				<label for="Email" class="datosText">Email</label>
+				<input type="text" name="Email" id="email" class="datosInput"
+					placeholder=" ej: email@gmail.com"><br><br><br><br><br>
 			</div>
-
+		
 			<!-- Ingredientes -->
 
-			<h3>Selecciona ingredientes:</h3><br>
-
+			<h2>Selecciona ingredientes:</h2><br>
+			<div id="ingCss">
 			<table id="ingredientes" class="placeholderIng"></table>
+			</div>
+			
+			<!-- Tamano -->
 
+			<div id="fila3">
+			<div class="tamano">
+				<h2>Tamaño: </h2><br>
+				<div id="tamano"></div>
+			</div><hr>
+
+			<!-- Complementos -->
+			
+			<div class="complemento">
+				<h2>Complementos: </h2><br>	
+				<div id="complemento">
+				</div>
+			</div>
+			</div>
+			
 			<!-- Boton de enviar -->
-
+			<div id="botCss"></div>
 			<input type="button" id="enviar" value="Realizar pedido" class="button">
 			<input type="button" id="btnBuscarAsincrono" class="button" value="Pedir la carta"><br>
 

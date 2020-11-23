@@ -57,7 +57,7 @@ function procesarRespuesta(jsonDoc) {
 		var input = document.createElement("input")
 		input.setAttribute("type", "radio")
 		input.setAttribute("id", i.nombre)
-		input.setAttribute("name", "tamanos")
+		input.setAttribute("name", "tamano")
 		input.setAttribute("value", i.precio)
 
 		console.log(input)
@@ -101,15 +101,14 @@ function procesarRespuesta(jsonDoc) {
 
 		//Label
 		var label = document.createElement("label")
-		label.innerHTML = (i.nombreCom)
-		label.innerHTML += (i.precio)
+		label.innerHTML = (i.nombreCom+" ("+i.precio+"€)")
 		label.setAttribute("for", i.nombre)
 
 		//Img
 		var img = document.createElement("img");
 		img.src = i.img;
 		label.setAttribute("for", i.nombre)
-
+		img.setAttribute("class", "scale-in-center")
 		//Texto img
 		var txtImg = document.createElement("div");
 		txtImg.innerHTML = i.nombreCom

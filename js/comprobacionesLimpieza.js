@@ -63,7 +63,7 @@ function comprobarPrepararCampos() {
     console.log(nombreOK + direccionOK + codPosOK + emailOK + telefonoStr)
 
     // ************************ EXPRESIONES REGULARES ************************
-    
+
     /*La expresión regular de nombre establece que
     empiece por una letra mayúscula y sigan
     entre 8 y 30 caracteres, mayúsculas o minúsculas
@@ -94,7 +94,7 @@ function comprobarPrepararCampos() {
         user.name+tag+sorting@patata.org
         user_name_test@pata_12.es
     */
-   
+
     /*La primera parte tenga minúsculas, números, guiones, guiones bajos,
     puntos o +, entre 3 y 25 caracteres;; arroba;; dominio con letras,
     números o _ ;; y .com/.es/.org ... */
@@ -141,38 +141,57 @@ function comprobarPrepararCampos() {
 
     }
 
-  
+
     // ************************ COMPROBACIONES II: RADIO BUTTON TAMAÑO PIZZA ************************
 
     var testLocal = false
 
     //Si no hay ningun botón marcado es que no se ha seleccionado ningun tamaño
 
-    var tam = document.getElementsByName("tamanos")
+    var tam = document.getElementsByName("tamano")
     for (var i = 0; i < tam.length; i++) {
         if (tam[i].checked) {
             testLocal = true
-        } 
-    } 
+        }
+    }
     if (valido == true && testLocal == true) {
         valido = true
     } else if (valido == true && testLocal == false) {
         valido = false
         alert("Necesitas decirnos el tamaño de tu pizza!")
-    } 
-    
-    // ************************ COMPROBACIONES III: CHECKBOX COMPLEMENTOS ************************
+    }
+
+    // ************************ COMPROBACIONES III: CHECKBOX INGREDIENTES ************************
 
     testLocal = false
 
     //Si no hay ningún ingrediente seleccionado, es incorrecto el formulario
-    
+
+    var ing = document.getElementsByName("ingrediente")
+    for (var i = 0; i < ing.length; i++) {
+        if (ing[i].checked) {
+            testLocal = true
+        }
+    }
+    if (valido == true && testLocal == true) {
+        valido = true
+    } else if (valido == true && testLocal == false) {
+        valido = false
+        alert("No seas rata!! ¿Sólo quieres masa? Que menos que un ingrediente!")
+    }
+
+    // ************************ COMPROBACIONES IV: CHECKBOX COMPLEMENTOS ************************
+
+    testLocal = false
+
+    //Si no hay ningún ingrediente seleccionado, es incorrecto el formulario
+
     var ing = document.getElementsByName("complemento")
     for (var i = 0; i < ing.length; i++) {
         if (ing[i].checked) {
             testLocal = true
-        } 
-    } 
+        }
+    }
     if (valido == true && testLocal == true) {
         valido = true
     } else if (valido == true && testLocal == false) {
@@ -180,31 +199,14 @@ function comprobarPrepararCampos() {
         alert("Venga... ¡Pide un complemento!")
     }
 
-    // ************************ COMPROBACIONES IV: CHECKBOX INGREDIENTES ************************
 
-    testLocal = false
-
-    //Si no hay ningún ingrediente seleccionado, es incorrecto el formulario
-    
-    var ing = document.getElementsByName("ingrediente")
-    for (var i = 0; i < ing.length; i++) {
-        if (ing[i].checked) {
-            testLocal = true
-        } 
-    } 
-    if (valido == true && testLocal == true) {
-        valido = true
-    } else if (valido == true && testLocal == false) {
-        valido = false
-        alert("Elige algún ingrediente!")
-    }
 
     // ************************ RETURN RESULTADOS ************************
 
     //Si se han superado las 3 validaciones
-    if(valido == true){
+    if (valido == true) {
 
-    //if (valido1 && valido2 && valido3) {
+        //if (valido1 && valido2 && valido3) {
         //Creamos un array, donde metemos
         //las variables de campos limpias
         let campos = []
@@ -214,9 +216,9 @@ function comprobarPrepararCampos() {
         campos[3] = telefonoOK
         campos[4] = emailOK
         //y lo devolvemos
-        return(campos)
-    //Si alguna no se ha superado,
-    }else{
+        return (campos)
+        //Si alguna no se ha superado,
+    } else {
         //devolveremos "error"
         return "error"
     }
@@ -250,10 +252,10 @@ function limpiarCadena(cadena) {
 //haber números
 function limpiarCPTel(cadena) {
     let cadena1 = cadena.replaceAll(/\s/g, "")
-    cadena1 = cadena1.replaceAll(".","")
-    cadena1 = cadena1.replaceAll(",","")
-    cadena1 = cadena1.replaceAll("(","")
-    cadena1 = cadena1.replaceAll(")","")
+    cadena1 = cadena1.replaceAll(".", "")
+    cadena1 = cadena1.replaceAll(",", "")
+    cadena1 = cadena1.replaceAll("(", "")
+    cadena1 = cadena1.replaceAll(")", "")
     return cadena1
 }
 
@@ -269,7 +271,7 @@ function limpiarNomDir(cadena) {
     cadena1 = cadena1.replaceAll("ª", "")
     cadena1 = cadena1.replaceAll(".", "_")
     cadena1 = cadena1.replaceAll(",", "_")
-    cadena1 = cadena1.replaceAll("/","_")
+    cadena1 = cadena1.replaceAll("/", "_")
     cadena1 = cadena1.replaceAll(/\s/g, "_")
     return cadena1
 }

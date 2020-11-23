@@ -15,7 +15,7 @@ function sendFormulario(camposArray) {
 
     /* Creamos e inicializamos una variable parametros
     donde iremos almacenando la cadena de parámetros*/
-    let parametros = ""
+    let parametros = '{'
 
     /*Primeramente, añadimos estas variables
     que ya teníamos preparadas, que hemos obtenido
@@ -23,11 +23,11 @@ function sendFormulario(camposArray) {
     Vamos añadiendo a parametros, separando nombre
     y valor por un =, y añadiendo un & al final,
     para separar del siguiente campo*/
-    parametros += "nombre=" + nombreOK + "&"
-    parametros += "direccion=" + direccionOK + "&"
-    parametros += "codPos=" + codPosOK + "&"
-    parametros += "telefono=" + telefonoOK + "&"
-    parametros += "email=" + emailOK + "&"
+    parametros += '"nombre" : "' + nombreOK + '",'
+    parametros += '"direccion" : "' + direccionOK + '",'
+    parametros += '"codPos" : "' + codPosOK + '",'
+    parametros += '"telefono" : "' + telefonoOK + '",'
+    parametros += '"email" : "' + emailOK + '",'
 
     // ****************************** PARTE 2 - RADIO Y CHECBOX ******************************
 
@@ -40,10 +40,10 @@ function sendFormulario(camposArray) {
 
     /*Empezamos por el 5, ya que los anteriores son los campos de texto, que ya están
     Acabamos por el 14, porque ese es el último radio, el de bourbon*/
-    
 
-for (i = 0; i < formularioRead.length; i++) {
-    console.log("fjfjfjfjjfjfjfjfjfjfjfj")
+
+    for (i = 0; i < formularioRead.length; i++) {
+        console.log("fjfjfjfjjfjfjfjfjfjfjfj")
         if (formularioRead.elements[i].type == "checkbox" || formularioRead.elements[i].type == "radio") {
 
             //Si no está chequeada, no hacemos nada
@@ -56,7 +56,7 @@ for (i = 0; i < formularioRead.length; i++) {
                 let valorParametro = formularioRead.elements[i].id
                 console.log(formularioRead.elements[i].text)
 
-                parametros += nombreParametro + "=" + valorParametro + "&"
+                parametros += '"' + nombreParametro + '" : "' + valorParametro + '",'
             }
         }
 
@@ -65,13 +65,29 @@ for (i = 0; i < formularioRead.length; i++) {
     /*Nos quedamos con parametros menos su último char, es decir,
     el & que ya no nos serviría*/
     parametros = parametros.substring(0, parametros.length - 1)
+    parametros += "}"
+    let parametrosJSON = JSON.parse(parametros)
 
+    console.log(parametrosJSON)
+
+    const URL = 'http://127.0.0.1:5500/pedido.json'
+
+    // Mandamos un POST
+    fetch(URL,
+        {
+            method: "POST",
+            body: JSON.stringify(parametrosJSON),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }
+    )
 
     //Añadimos a la URL de envío estos parámetros
     formularioRead.action += parametros
 
     //Procedemos a enviar el formulario
-    formularioRead.submit()
+    //formularioRead.submit()
 
 }
 
@@ -119,28 +135,28 @@ function calcularPrecio() {
 }
 
 
-/* JS calcula precio con cada click */ 
+/* JS calcula precio con cada click */
 
 window.onclick = function actualiza() {
-    
-    /* Calcula precio con cada click */ 
 
-		//Selecciona todo input con valor
-		elementos = document.querySelectorAll('input[value]')
-		let total = 0
-		//Recorre inputs, si checked, suma el valor
-		for (var i = 0; i < elementos.length; i++) {
-			if (elementos[i].checked) {
-				total += parseInt(elementos[i].value)
-			}
-		} document.getElementById("precio").innerHTML = ("Total: " + total + "€")
+    /* Calcula precio con cada click */
 
-	/* Hace mayúscula la primera letra */
+    //Selecciona todo input con valor
+    elementos = document.querySelectorAll('input[value]')
+    let total = 0
+    //Recorre inputs, si checked, suma el valor
+    for (var i = 0; i < elementos.length; i++) {
+        if (elementos[i].checked) {
+            total += parseInt(elementos[i].value)
+        }
+    } document.getElementById("precio").innerHTML = ("Total: " + total + "€")
 
-		let n = document.getElementById("nombre").value
-		let c = n.charAt(0)
-		n = n.slice(1)
-		c = c.toUpperCase()
-		document.getElementById("nombre").value = (c + n)
+    /* Hace mayúscula la primera letra */
+
+    let n = document.getElementById("nombre").value
+    let c = n.charAt(0)
+    n = n.slice(1)
+    c = c.toUpperCase()
+    document.getElementById("nombre").value = (c + n)
 
 }
