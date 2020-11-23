@@ -37,21 +37,21 @@ function procesarRespuesta(jsonDoc) {
 		borra.firstChild.remove()
 	}
 
+	var borra = document.getElementById("complemento")
+	while (borra.firstChild) {
+		borra.firstChild.remove()
+	}
+
 	//Creamos objeto JSON
 
 	var objetoJson = JSON.parse(jsonDoc)
 	var arrayTamanos = objetoJson.PIZZA.TAMANOS
 	var arrayIngredientes = objetoJson.PIZZA.INGREDIENTES
+	var arrayComplementos = objetoJson.PIZZA.COMPLEMENTOS
 
 	//Tamanos
 
-	for (let i of arrayTamanos) {
-
-		//Borrar elementos anteriores
-		var borra = document.getElementsByClassName("opcionesTamano")
-		for (let i = 0; i < borra.length; i++) {
-			borra[i].remove()
-		}
+		for (let i of arrayTamanos) {
 
 		//Input
 		var input = document.createElement("input")
@@ -85,7 +85,7 @@ function procesarRespuesta(jsonDoc) {
 
 	//Ingredientes
 
-	for (let i of arrayIngredientes) {
+		for (let i of arrayIngredientes) {
 		var elemento = document.createElement("div")
 		elemento.setAttribute("id", "elemento")
 		//Input
@@ -128,25 +128,24 @@ function procesarRespuesta(jsonDoc) {
 		let sel = false
 		img.addEventListener("click", function () {
 			if (sel == false) {
-				this.setAttribute("style", "filter: brightness(60%) blur(2px);")
+				this.setAttribute("style", "filter: brightness(55%) blur(2px);")
 				sel = true
 			} else {
-				this.removeAttribute("style", "filter: brightness(60%) blur(2px);")
+				this.removeAttribute("style", "filter: brightness(55%) blur(2px);")
 				sel = false
 			}
 		})
 	}
 
-	/*Complementos
+	//Complementos
 
 	for (let i of arrayComplementos) {
-		var elemento = document.createElement("div")
-		elemento.setAttribute("id", "elemento")
+
 		//Input
 		var input = document.createElement("input")
 		input.setAttribute("type", "checkbox")
 		input.setAttribute("id", i.nombre)
-		input.setAttribute("name", "ingrediente")
+		input.setAttribute("name", "complemento")
 		input.setAttribute("value", i.precio)
 
 		//Espacio entre input y label
@@ -155,39 +154,16 @@ function procesarRespuesta(jsonDoc) {
 
 		//Label
 		var label = document.createElement("label")
-		label.innerHTML = (i.nombreCom)
-		label.innerHTML += (i.precio)
+		label.innerHTML = (i.nombreCom+" ("+i.precio+"€)")
 		label.setAttribute("for", i.nombre)
 
-		//Img
-		var img = document.createElement("img");
-		img.src = i.img;
-		label.setAttribute("for", i.nombre)
-
-		//Texto img
-		var txtImg = document.createElement("div");
-		txtImg.innerHTML = i.nombreCom
-		txtImg.setAttribute("id", "txtImg")
+		//Salto linea
+		var p = document.createElement("p")
 
 		//Anadir elementos al DOM
-		elemento.appendChild(input)
-		elemento.appendChild(espacio)
-		elemento.appendChild(label)
-		img.appendChild(txtImg)
-		label.appendChild(img)
-		document.getElementById("ingredientes").appendChild(elemento)
-		console.log(elemento)
-
-		//Evento seleccionar ingrediente
-		let sel = false
-		img.addEventListener("click", function () {
-			if (sel == false) {
-				this.setAttribute("style", "filter: brightness(60%) blur(2px);")
-				sel = true
-			} else {
-				this.removeAttribute("style", "filter: brightness(60%) blur(2px);")
-				sel = false
-			}
-		})
-	}*/
+		document.getElementById("complemento").appendChild(input)
+		document.getElementById("complemento").appendChild(espacio)
+		document.getElementById("complemento").appendChild(label)
+		document.getElementById("complemento").appendChild(p)
+	}
 }

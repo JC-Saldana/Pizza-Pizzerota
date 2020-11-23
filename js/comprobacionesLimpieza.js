@@ -160,7 +160,27 @@ function comprobarPrepararCampos() {
         valido = false
         alert("Necesitas decirnos el tamaño de tu pizza!")
     } 
-    // ************************ COMPROBACIONES III: CHECKBOX INGREDIENTES ************************
+    
+    // ************************ COMPROBACIONES III: CHECKBOX COMPLEMENTOS ************************
+
+    testLocal = false
+
+    //Si no hay ningún ingrediente seleccionado, es incorrecto el formulario
+    
+    var ing = document.getElementsByName("complemento")
+    for (var i = 0; i < ing.length; i++) {
+        if (ing[i].checked) {
+            testLocal = true
+        } 
+    } 
+    if (valido == true && testLocal == true) {
+        valido = true
+    } else if (valido == true && testLocal == false) {
+        valido = false
+        alert("Venga... ¡Pide un complemento!")
+    }
+
+    // ************************ COMPROBACIONES IV: CHECKBOX INGREDIENTES ************************
 
     testLocal = false
 

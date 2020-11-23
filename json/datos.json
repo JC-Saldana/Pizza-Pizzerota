@@ -74,7 +74,7 @@
             "img": "./img/piña.jpg"
         }
       ], 
-      "Complementos": [
+      "COMPLEMENTOS": [
         {
           "nombre": "patatas",
           "nombreCom": "Papas fritas",
