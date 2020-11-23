@@ -1,3 +1,5 @@
-window.onload = function dfg() {
-    document.getElementById("envio").addEventListener("click", enviarPedido);
+window.onload = function() {
+    document.getElementById("enviar").addEventListener("click", enviarPedido)
+    document.getElementById("btnBuscarAsincrono").addEventListener("click", cargaActualiza)
+    document.getElementById("btnBuscarAsincrono").addEventListener("click", AJAXjson)
 }

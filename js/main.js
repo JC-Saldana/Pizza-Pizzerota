@@ -6,7 +6,7 @@ y en su caso, ir llamando a las otras funciones
 */
 
 function cargaActualiza(){
-    console.log("aaaaaaaaaaa")
+    document.getElementById("btnBuscarAsincrono").value = "Refrescar"
     AJAXjson()
 }
 function enviarPedido() {

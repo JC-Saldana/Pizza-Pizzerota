@@ -16,7 +16,7 @@
 
 <!-- Body, ejecuta funcion con cada click -->
 
-<body onload=AJAXjson()>
+<body id="body">
 	<div id="fondo">
 		<h1>Pizza al gusto</h1><br>
 
@@ -78,8 +78,8 @@
 
 			<!-- Boton de enviar -->
 
-			<input type="button" value="Realizar pedido" class="button" onclick="enviarPedido()">
-			<input type="button" id="btnBuscarAsincrono" class="button" value="Refrescar carta" onclick="cargaActualiza()"><br>
+			<input type="button" id="enviar" value="Realizar pedido" class="button">
+			<input type="button" id="btnBuscarAsincrono" class="button" value="Pedir la carta"><br>
 
 			<!-- Precio que se actualiza -->
 
