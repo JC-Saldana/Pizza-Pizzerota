@@ -118,39 +118,6 @@ function calcularPrecio() {
     return confirmado
 }
 
-function mostrarPrecio() {
-   /*Almacenamos los datos del formulario en la variable formularioRead que creamos ahora*/
-   let formularioRead = document.getElementById("formularioID");
-
-   //Creamos e inicializamos a 0la variable precio
-   let precio = 0
-
-   //Creamos un bucle for, que irá desde la posición 5 a la 11,
-   //es decir, desde el radio de pequena hasta el checkbox de ternera
-   for (i = 5; i < formularioRead.length; i++) {
-       if (formularioRead.elements[i].type == "checkbox" || formularioRead.elements[i].type == "radio") {
-           //Si no está chequeada, no hacemos nada
-           if (formularioRead.elements[i].checked == false) {
-               //continuamos hacia el siguiente
-               continue
-           } else {
-
-               precioLeido = formularioRead.elements[i].value
-               precioLeido = parseInt(precioLeido)
-               console.log(precioLeido)
-               if (!isNaN(precioLeido)) {
-
-                   precio += precioLeido
-               }
-               console.log(precio)
-               document.getElementById("precioID").innerHTML = ("Precio Total: " + precio + "€")
-           }
-       }
-
-   }
-    
-}
-
 
 /* JS calcula precio con cada click */ 
 

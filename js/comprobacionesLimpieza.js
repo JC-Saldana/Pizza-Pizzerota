@@ -104,89 +104,85 @@ function comprobarPrepararCampos() {
 
     // ************************ COMPROBACIONES I: CAMPOS DE TEXTO ************************
 
-    /*Comprobamos primeramente los campos de texto, haciendo uso de las variables
-    con los datos ya depurados y las expresiones regulares antes mencionados*/
+    /*Asumimos una variable inicial falsa común a todas las comprobaciones valido, haciendo
+    uso de las variables con los datos ya depurados y las expresiones regulares antes mencionados*/
 
-    //Esta primera fase tendrá una variable que cambiaremos a true
-    //Si se supera la validación
-    let valido1 = false;
+    let valido = false;
 
     //Comprobamos una a una las variables contra la expresión regular
     if (nombreReg.test(nombreOK) && direccionReg.test(direccionOK) && codPosReg.test(codPosOK) && telefonoReg.test(telefonoOK) && emailReg.test(emailOK)) {
         //Si la comprobación da correta, almancenamos true en valido1
-        valido1 = true;
+        valido = true;
 
-    }
-    /*Si el if superior da false, al menos uno de los
-    requisitos no se cumple*/
-    else {
+    } else {
         /*Comprobamos uno por uno, y en su caso, informamos
         al usuario del error, para que pueda corregirlo*/
-        var valido = true
+        var val = true
         if (!nombreReg.test(nombreOK)) {
-            alert("El nombre que has introducido es incorrecto!\nRecuerda que debe empezar por maýusculas!\nRevísalo! ")
-            valido = false
+            alert("El nombre que has introducido es incorrecto!\nRecuerda que debe empezar por maýusculas e incluir apellido!")
+            val = false
         }
-        if (!direccionReg.test(direccionOK) && valido == true) {
+        if (!direccionReg.test(direccionOK) && val == true) {
             alert("La dirección que has introducido es incorrecta! Revísalo!")
-            valido = false
+            val = false
         }
-        if (!codPosReg.test(codPosOK) && valido == true) {
+        if (!codPosReg.test(codPosOK) && val == true) {
             alert("El código postal es incorrecto! Revísalo!")
-            valido = false
+            val = false
         }
-        if (!telefonoReg.test(telefonoOK) && valido == true) {
-            alert("El teléfono es incorrecto!\nRecuerda que sólo aceptamos números nacionales (sin prefijo +34)!\nRevísalo! ")
-            valido = false
+        if (!telefonoReg.test(telefonoOK) && val == true) {
+            alert("El teléfono es incorrecto!\nSólo aceptamos números nacionales: debe empezar por 6, 7, 8 o 9 y sin prefijo!")
+            val = false
         }
-        if (!emailReg.test(emailOK) && valido == true) {
+        if (!emailReg.test(emailOK) && val == true) {
             alert("El email es incorrecto! Revísalo!")
-            valido = false
+            val = false
         }
 
     }
 
-    /* ================================ ATENCION - COMPROBACIONES DESACTIVADAS PROVISIONALMENTE ================================ */
-    /*
-
+  
     // ************************ COMPROBACIONES II: RADIO BUTTON TAMAÑO PIZZA ************************
-    //Igual que con el anterior apartado, creamos una variable valido2
-    //que inicializamos a false
-    let valido2 = false;
 
-    //Si no hay ningun botón marcado es que no se ha seleccionado ningñun tamaño
-    if (!formularioRead.elements[5].checked && !formularioRead.elements[6].checked && !formularioRead.elements[7].checked) {
-        //Informamos al usuario
-        alert("Debes escoger el tamaño de la pizza! Revísalo!")
-    } else {
-        //Si alguno está marcado, es correcto
-        //con lo que ponemos valido2 a true
-        valido2 = true
-    }
-    
+    var testLocal = false
+
+    //Si no hay ningun botón marcado es que no se ha seleccionado ningun tamaño
+
+    var tam = document.getElementsByName("tamanos")
+    for (var i = 0; i < tam.length; i++) {
+        if (tam[i].checked) {
+            testLocal = true
+        } 
+    } 
+    if (valido == true && testLocal == true) {
+        valido = true
+    } else if (valido == true && testLocal == false) {
+        valido = false
+        alert("Necesitas decirnos el tamaño de tu pizza!")
+    } 
     // ************************ COMPROBACIONES III: CHECKBOX INGREDIENTES ************************
-    //Procedemos análogamente a con los radio button:
-    //Creamosariable valido3 inicializada a false
-    let valido3 = false;
+
+    testLocal = false
 
     //Si no hay ningún ingrediente seleccionado, es incorrecto el formulario
-    if (!formularioRead.elements[8].checked && !formularioRead.elements[9].checked && !formularioRead.elements[10].checked && !formularioRead.elements[11].checked) {
-        //Informamos al usuario
-        alert("Debes escoger al menos 1 ingrediente! Revísalo!")
-    } else {
-        //Si al menos ha cogido 1 ingrediente, es correcto
-        //ponemos a true valido3
-        valido3 = true;
+    
+    var ing = document.getElementsByName("ingrediente")
+    for (var i = 0; i < ing.length; i++) {
+        if (ing[i].checked) {
+            testLocal = true
+        } 
+    } 
+    if (valido == true && testLocal == true) {
+        valido = true
+    } else if (valido == true && testLocal == false) {
+        valido = false
+        alert("Elige algún ingrediente!")
     }
-    */
 
     // ************************ RETURN RESULTADOS ************************
 
     //Si se han superado las 3 validaciones
-    if(valido1){
-        
-    /* ================================ FIN - COMPROBACIONES DESACTIVADAS PROVISIONALMENTE ================================ */
-
+    if(valido == true){
 
     //if (valido1 && valido2 && valido3) {
         //Creamos un array, donde metemos

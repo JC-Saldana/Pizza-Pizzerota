@@ -73,6 +73,23 @@
             "precio": 1,
             "img": "./img/piña.jpg"
         }
+      ], 
+      "Complementos": [
+        {
+          "nombre": "patatas",
+          "nombreCom": "Papas fritas",
+          "precio": 2
+        },
+        {
+          "nombre": "lechuga",
+          "nombreCom": "Lechuga frita",
+          "precio": 3
+        },
+        {
+          "nombre": "pan",
+          "nombreCom": "Pan también frito",
+          "precio": 1
+        }
       ]
   }
 }

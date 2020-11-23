@@ -51,7 +51,8 @@ input {
 .complemento.input {
 padding-top: 5px;
 }
-button {
+
+.button {
 	margin-top:4%;
 	border-radius: 6px;
 	font-weight: bold;
@@ -63,8 +64,9 @@ button {
 	height: 30px;
 	float: right;
 }
-button:hover{
+.button:hover{
 	background-color: #669A94;
+	cursor: pointer;
 }
 #fondo {
 	background-color: white;

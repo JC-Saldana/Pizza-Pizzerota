@@ -136,4 +136,58 @@ function procesarRespuesta(jsonDoc) {
 			}
 		})
 	}
+
+	/*Complementos
+
+	for (let i of arrayComplementos) {
+		var elemento = document.createElement("div")
+		elemento.setAttribute("id", "elemento")
+		//Input
+		var input = document.createElement("input")
+		input.setAttribute("type", "checkbox")
+		input.setAttribute("id", i.nombre)
+		input.setAttribute("name", "ingrediente")
+		input.setAttribute("value", i.precio)
+
+		//Espacio entre input y label
+		var espacio = document.createElement("text")
+		espacio.innerHTML = ("&nbsp;")
+
+		//Label
+		var label = document.createElement("label")
+		label.innerHTML = (i.nombreCom)
+		label.innerHTML += (i.precio)
+		label.setAttribute("for", i.nombre)
+
+		//Img
+		var img = document.createElement("img");
+		img.src = i.img;
+		label.setAttribute("for", i.nombre)
+
+		//Texto img
+		var txtImg = document.createElement("div");
+		txtImg.innerHTML = i.nombreCom
+		txtImg.setAttribute("id", "txtImg")
+
+		//Anadir elementos al DOM
+		elemento.appendChild(input)
+		elemento.appendChild(espacio)
+		elemento.appendChild(label)
+		img.appendChild(txtImg)
+		label.appendChild(img)
+		document.getElementById("ingredientes").appendChild(elemento)
+		console.log(elemento)
+
+		//Evento seleccionar ingrediente
+		let sel = false
+		img.addEventListener("click", function () {
+			if (sel == false) {
+				this.setAttribute("style", "filter: brightness(60%) blur(2px);")
+				sel = true
+			} else {
+				this.removeAttribute("style", "filter: brightness(60%) blur(2px);")
+				sel = false
+			}
+		})
+	}*/
 }

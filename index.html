@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>Pizzeria Pizzerota</title>
 	<!-- JS -->
+	<script type="text/javascript" src="js/onload.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/comprobacionesLimpieza.js"></script>
 	<script type="text/javascript" src="js/precioEnvio.js"></script>
@@ -15,7 +16,7 @@
 
 <!-- Body, ejecuta funcion con cada click -->
 
-<body onclick=mostrarPrecio() onload=AJAXjson()>
+<body onload=AJAXjson()>
 	<div id="fondo">
 		<h1>Pizza al gusto</h1><br>
 
@@ -63,16 +64,6 @@
 						<input type="radio" name="tamano" name="tamano" class="?">
 						<label for="grande" class="?">?</label>
 
-						<!--
-		<input type="radio" name="tamano" id="pequena" value="5" >
-		<label for="pequena">Pequena <sup>+5</sup></label><br>
-
-		<input type="radio" name="tamano" id="mediana" value="10">
-		<label for="mediana">Mediana <sup>+10</sup></label><br>
-
-		<input type="radio" name="tamano" id="grande" value="15">
-		<label for="grande">Grande <sup>+15</sup></label>
--->
 					</div>
 				</div>
 
@@ -100,12 +91,9 @@
 			<table id="ingredientes" class="placeholderIng"></table>
 
 			<!-- Boton de enviar -->
-			<input type="button" id="btnBuscarAsincrono" value="Refrescar carta" onclick="cargaActualiza()">
-			<input type="button" value="Realizar pedido" onclick="enviarPedido()">
-			<button type="submit">Realizar pedido</button>
-			<button type="button" >Ver existencias</button><br>
 
-
+			<input type="button" value="Realizar pedido" class="button" onclick="enviarPedido()">
+			<input type="button" id="btnBuscarAsincrono" class="button" value="Refrescar carta" onclick="cargaActualiza()"><br>
 
 			<!-- Precio que se actualiza -->
 
