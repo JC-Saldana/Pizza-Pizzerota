@@ -2,7 +2,7 @@
 /* JS para peticiones AJAX */
 
 // Configuracion AJAX
-const URL_DESTINO = "http://localhost:5501/json/"
+const URL_DESTINO = "http://127.0.0.1:5500/json/"
 const RECURSO = "datos.json"
 
 function AJAXjson() {
@@ -51,7 +51,7 @@ function procesarRespuesta(jsonDoc) {
 
 	//Tamanos
 
-		for (let i of arrayTamanos) {
+	for (let i of arrayTamanos) {
 
 		//Input
 		var input = document.createElement("input")
@@ -69,7 +69,7 @@ function procesarRespuesta(jsonDoc) {
 
 		//Label
 		var label = document.createElement("label")
-		label.innerHTML = (i.nombreCom+" ("+i.precio+"€)")
+		label.innerHTML = (i.nombreCom + " (" + i.precio + "€)")
 
 		label.setAttribute("for", i.nombre)
 
@@ -85,7 +85,7 @@ function procesarRespuesta(jsonDoc) {
 
 	//Ingredientes
 
-		for (let i of arrayIngredientes) {
+	for (let i of arrayIngredientes) {
 		var elemento = document.createElement("div")
 		elemento.setAttribute("id", "elemento")
 		//Input
@@ -101,7 +101,7 @@ function procesarRespuesta(jsonDoc) {
 
 		//Label
 		var label = document.createElement("label")
-		label.innerHTML = (i.nombreCom+" ("+i.precio+"€)")
+		label.innerHTML = ("<h4>" + i.nombreCom + " (" + i.precio + "€)" + "</h4><br>")
 		label.setAttribute("for", i.nombre)
 
 		//Img
@@ -153,7 +153,7 @@ function procesarRespuesta(jsonDoc) {
 
 		//Label
 		var label = document.createElement("label")
-		label.innerHTML = (i.nombreCom+" ("+i.precio+"€)")
+		label.innerHTML = (i.nombreCom + " (" + i.precio + "€)")
 		label.setAttribute("for", i.nombre)
 
 		//Salto linea

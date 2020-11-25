@@ -17,79 +17,78 @@
         "precio": 15
       }
     ],
-
-"INGREDIENTES": [
-        {
-          "nombre": "bacon",
-          "nombreCom": "Crispy Bacon",
-          "precio": 3,
-          "img": "./img/bacon.jpg"
-        },
-        {
-          "nombre": "queso",
-          "nombreCom": "Chedar Cheese",
-          "precio": 2,
-          "img": "./img/queso.jpg"
-        },
-        {
-          "nombre": "ternera",
-          "nombreCom": "Ternera",
-          "precio": 1,
-          "img": "./img/ternera.jpg"
-        },
-        {
-          "nombre": "jamon",
-          "nombreCom": "Jamón Ibérico",
-          "precio": 3,
-          "img": "./img/jamon.jpg"
-        },
-        {
-          "nombre": "aceitunas",
-          "nombreCom": "Aceitunas Negras",
-          "precio": 5,
-          "img": "./img/aceitunas.jpg"
-        },
-        {
-          "nombre": "tomate",
-          "nombreCom": "Tomate Cherry",
-          "precio": 4,
-          "img": "./img/tomate.jpg"
-        },
-        {
-            "nombre": "pollo",
-            "nombreCom": "Pollo Marinado",
-            "precio": 2,
-            "img": "./img/pollo.jpg"
-        },
-        {
-            "nombre": "cerdo",
-            "nombreCom": "Pulled Pork",
-            "precio": 4,
-            "img": "./img/cerdo.jpg"
-        },
-        {
-            "nombre": "piña",
-            "nombreCom": "Piña",
-            "precio": 1,
-            "img": "./img/piña.jpg"
-        }
-      ], 
-      "COMPLEMENTOS": [
-        {
-          "nombre": "patatas",
-          "nombreCom": "Papas fritas",
-          "precio": 2
-        },
-        {
-          "nombre": "lechuga",
-          "nombreCom": "Lechuga frita",
-          "precio": 3
-        },
-        {
-          "nombre": "pan",
-          "nombreCom": "Pan también frito",
-          "precio": 1
-        }
-      ]
+    "INGREDIENTES": [
+      {
+        "nombre": "bacon",
+        "nombreCom": "Crispy Bacon",
+        "precio": 3,
+        "img": "./img/bacon.jpg"
+      },
+      {
+        "nombre": "queso",
+        "nombreCom": "Chedar Cheese",
+        "precio": 2,
+        "img": "./img/queso.jpg"
+      },
+      {
+        "nombre": "ternera",
+        "nombreCom": "Ternera",
+        "precio": 1,
+        "img": "./img/ternera.jpg"
+      },
+      {
+        "nombre": "jamon",
+        "nombreCom": "Jamón Ibérico",
+        "precio": 3,
+        "img": "./img/jamon.jpg"
+      },
+      {
+        "nombre": "aceitunas",
+        "nombreCom": "Aceitunas Negras",
+        "precio": 5,
+        "img": "./img/aceitunas.jpg"
+      },
+      {
+        "nombre": "tomate",
+        "nombreCom": "Tomate Cherry",
+        "precio": 4,
+        "img": "./img/tomate.jpg"
+      },
+      {
+        "nombre": "pollo",
+        "nombreCom": "Pollo Marinado",
+        "precio": 2,
+        "img": "./img/pollo.jpg"
+      },
+      {
+        "nombre": "cerdo",
+        "nombreCom": "Pulled Pork",
+        "precio": 4,
+        "img": "./img/cerdo.jpg"
+      },
+      {
+        "nombre": "piña",
+        "nombreCom": "Piña",
+        "precio": 1,
+        "img": "./img/piña.jpg"
+      }
+    ],
+    "COMPLEMENTOS": [
+      {
+        "nombre": "patatas",
+        "nombreCom": "Papas fritas",
+        "precio": 2
+      },
+      {
+        "nombre": "lechuga",
+        "nombreCom": "Lechuga frita",
+        "precio": 3
+      },
+      {
+        "nombre": "pan",
+        "nombreCom": "Pan también frito",
+        "precio": 1
+      }
+    ]
   }
 }

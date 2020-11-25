@@ -1,6 +1,7 @@
 /*Esta función se encarga de preparar los parámetros que vamos
-a enviar, así como de realizar el propio envío del formulario,
-como parámetro de entrada tiene el array de campos corregidos*/
+a enviar, teniendo como parámetro de entrada tiene el array de campos corregidos.
+Además, prepará los parámetros para que se genere un fichero JSON
+con todos los datos del pedido*/
 function sendFormulario(camposArray) {
 
     // ****************************** PARTE 1 - DATOS DE CAMPOS DE TEXTO ******************************
@@ -16,6 +17,9 @@ function sendFormulario(camposArray) {
     /* Creamos e inicializamos una variable parametros
     donde iremos almacenando la cadena de parámetros*/
     let parametros = '{'
+
+    let idPedido = Math.floor((Math.random() * 100000) + 1)
+    parametros += '"id" : "' + idPedido + '",'
 
     /*Primeramente, añadimos estas variables
     que ya teníamos preparadas, que hemos obtenido
@@ -38,12 +42,16 @@ function sendFormulario(camposArray) {
     /*Ahora, con un bucle for, iremos leyendo el resto de radio buttons
     y checkbox*/
 
-    /*Empezamos por el 5, ya que los anteriores son los campos de texto, que ya están
-    Acabamos por el 14, porque ese es el último radio, el de bourbon*/
+    /*Puesto que tanto los ingredientes como los complementos son checkbox
+    y puede que el usuario seleccione más de 1 de ellos,
+    tenemos que diferenciar la sintaxis, ya que crearemos un array en el JSON
+    para esos casos
+    */
 
-
+    let parametrosIngredientes = ""
+    let parametrosComplementos = ""
     for (i = 0; i < formularioRead.length; i++) {
-        console.log("fjfjfjfjjfjfjfjfjfjfjfj")
+
         if (formularioRead.elements[i].type == "checkbox" || formularioRead.elements[i].type == "radio") {
 
             //Si no está chequeada, no hacemos nada
@@ -51,44 +59,73 @@ function sendFormulario(camposArray) {
                 //continuamos hacia el siguiente
                 continue
             } else {
-                console.log(formularioRead.elements[i].text)
-                let nombreParametro = formularioRead.elements[i].name
-                let valorParametro = formularioRead.elements[i].id
-                console.log(formularioRead.elements[i].text)
+                //Si es un ingrediente o un complemento, 
+                //solo preparamos ese ingrediente como parametro
+                //y lo añadimos
+                if (formularioRead.elements[i].name == "ingrediente") {
 
-                parametros += '"' + nombreParametro + '" : "' + valorParametro + '",'
+                    parametrosIngredientes += '"' + formularioRead.elements[i].id + '", '
+                    console.log(parametrosIngredientes)
+
+                } else if (formularioRead.elements[i].name == "complemento") {
+
+                    parametrosComplementos += '"' + formularioRead.elements[i].id + '", '
+                    console.log(parametrosComplementos)
+                //Si se trata del tamaño, procedemos directamente,
+                //y lo agregamos ya a parametros
+                } else {
+
+                    console.log(formularioRead.elements[i].text)
+                    let nombreParametro = formularioRead.elements[i].name
+                    let valorParametro = formularioRead.elements[i].id
+                    parametros += ' "' + nombreParametro + '" : "' + valorParametro + '", '
+
+                }
+
+
+
             }
         }
 
     }
+    //Procedemos ahora con con los ingredientes y complementos:
+    //Eliminamos ahora la ", ", añadimos los corchetes que delimitan el array
+    //y lo agregamos a parámetros
+    parametrosIngredientes = parametrosIngredientes.substring(0, parametrosIngredientes.length - 2)
+    parametrosIngredientes = "[ " + parametrosIngredientes + " ]"
+    console.log(parametrosIngredientes)
+    parametros += '"ingredientes" : ' + parametrosIngredientes + ", "
 
-    /*Nos quedamos con parametros menos su último char, es decir,
-    el & que ya no nos serviría*/
-    parametros = parametros.substring(0, parametros.length - 1)
-    parametros += "}"
+    parametrosComplementos = parametrosComplementos.substring(0, parametrosComplementos.length - 2)
+    parametrosComplementos = "[ " + parametrosComplementos + " ]"
+    console.log(parametrosComplementos)
+    parametros += '"complementos" : ' + parametrosComplementos + " }"
+
+    console.log(parametros)
+
+    //Parseamos los parametros a JSON
     let parametrosJSON = JSON.parse(parametros)
 
     console.log(parametrosJSON)
 
-    const URL = 'http://127.0.0.1:5500/pedido.json'
 
-    // Mandamos un POST
-    fetch(URL,
-        {
-            method: "POST",
-            body: JSON.stringify(parametrosJSON),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }
-    )
+    let nombreArchivo = "Pedido-"+idPedido+".json"
+    //Llamamos a la función descargarArchivo y le pasamos los parámetros necesarios
+    
+    descargaArchivo(JSON.stringify(parametrosJSON), nombreArchivo, "json")
 
-    //Añadimos a la URL de envío estos parámetros
-    formularioRead.action += parametros
+    
+}
 
-    //Procedemos a enviar el formulario
-    //formularioRead.submit()
-
+/*Esta es una función aucilizar que utilizaremos
+para poder descargar el JSON con el pedido*/
+function descargaArchivo(contenido, nombreFile, tipoContenido) {
+    let descarga = document.createElement("a")
+    let archivo = new Blob([contenido], { type: tipoContenido })
+    descarga.href = URL.createObjectURL(archivo)
+    descarga.download = nombreFile
+    resultado = descarga.click()
+    return resultado
 }
 
 /*Esta función se encarga de calcular el precio del pedido

@@ -5,7 +5,7 @@ y esta función auxiliar que se encargará de almacenar los datos devueltos
 y en su caso, ir llamando a las otras funciones
 */
 
-function cargaActualiza(){
+function cargaActualiza() {
     document.getElementById("btnBuscarAsincrono").value = "Refrescar"
     AJAXjson()
 }
@@ -25,9 +25,14 @@ function enviarPedido() {
         if (pedidoAceptado) {
             //llamamos a la función sendFormulario
             //y le pasamos el array de campos
-            sendFormulario(campos)
+            pedidoGenerado = sendFormulario(campos)
+            //Cambiamos a la web de confirmación
+            window.location.replace("http://127.0.0.1:5500/receiveOrder.html");
+
+
 
         }
+
 
     }
 
