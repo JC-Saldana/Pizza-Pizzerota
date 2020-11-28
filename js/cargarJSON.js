@@ -2,167 +2,82 @@
 /* JS para peticiones AJAX */
 
 // Configuracion AJAX
-const URL_DESTINO = "http://127.0.0.1:5500/json/"
+
+const URL_DESTINO = "http://127.0.0.1:5502/json/"
 const RECURSO = "datos.json"
 
 function AJAXjson() {
-
-	let xmlHttp = new XMLHttpRequest()
-	xmlHttp.onreadystatechange = function () {
-		if (this.readyState == 4) {
-			if (this.status == 200) {
-				procesarRespuesta(this.responseText)//Obtenemos el valor en texto
-			} else {
-				alert("No encontrado!")
-			}
-		}
+    $.ajax({
+		'type'  : 'GET', 
+		'url'   : URL_DESTINO + RECURSO,
 	}
-	xmlHttp.open('GET', URL_DESTINO + RECURSO)
-	xmlHttp.send(null)
+).done(procesarRespuesta)
+.fail(procesarError)
 }
 
 // Colocando datos JSON por la pagina
 
-function procesarRespuesta(jsonDoc) {
+function procesarRespuesta(datos) {
+
+	console.log(arguments)
+	console.log(datos)
 
 	//Borrar elementos anteriores
+	$("#tamanos").html("")
+	$("#complementos").html("")
+	$("#ingredientes").html("")
 
-	var borra = document.getElementById("ingredientes")
-	while (borra.firstChild) {
-		borra.firstChild.remove()
-	}
+	//Objetos JSON
+	let arrayTamanos = datos.PIZZA.TAMANOS
+	let arrayIngredientes = datos.PIZZA.INGREDIENTES
+	let arrayComplementos = datos.PIZZA.COMPLEMENTOS
 
-	var borra = document.getElementById("tamano")
-	while (borra.firstChild) {
-		borra.firstChild.remove()
-	}
+	//Añadimos elementos. Por cada iteracion creamos el elemento TR con los datos.
+    //Con "${}" podemos extraer el valor de las variables y ponerlas
+    //directamene en un String (seria como concatenar).
 
-	var borra = document.getElementById("complemento")
-	while (borra.firstChild) {
-		borra.firstChild.remove()
-	}
+    $.each(arrayTamanos,function(i, tamano){
 
-	//Creamos objeto JSON
+		console.log(tamano)
+        let boton = $(`<input type="radio" name=tamanos id=${tamano.nombre} value=${tamano.precio}><label for=${tamano.nombre}>${tamano.nombreCom} (${tamano.precio}€)</label><p></p>`)
+		boton.appendTo("#tamanos")
 
-	var objetoJson = JSON.parse(jsonDoc)
-	var arrayTamanos = objetoJson.PIZZA.TAMANOS
-	var arrayIngredientes = objetoJson.PIZZA.INGREDIENTES
-	var arrayComplementos = objetoJson.PIZZA.COMPLEMENTOS
+    })
 
-	//Tamanos
+	$.each(arrayComplementos,function(i, complemento){
+      
+		console.log(complemento)
+        let boton = $(`<input type="radio" name=complementos id=${complemento.nombre} value=${complemento.precio}><label for=${complemento.nombre}>${complemento.nombreCom} (${complemento.precio}€)</label><p></p>`)
+		boton.appendTo("#complementos")
 
-	for (let i of arrayTamanos) {
+	})
+	
+	$.each(arrayIngredientes,function(i, ingrediente){
+     
+ 		console.log(ingrediente)
+		let checkbox = $(`<div id=ing${i}><input type="checkbox" id=${ingrediente.nombre} name="ingrediente" value=${ingrediente.precio} >
+		<label for=${ingrediente.nombre}><h4>${ingrediente.nombreCom} (${ingrediente.precio}€)</h4><br>
+		<img src=${ingrediente.img} id="ingNoSeleccionado" class="scale-in-center" name="seleccionable"></label></div>`)
+		checkbox.appendTo("#ingredientes")
 
-		//Input
-		var input = document.createElement("input")
-		input.setAttribute("type", "radio")
-		input.setAttribute("id", i.nombre)
-		input.setAttribute("name", "tamano")
-		input.setAttribute("value", i.precio)
+	})
 
-		console.log(input)
+	//CSS indica imagen seleccionada
 
-		//Espacio entre input y label
-		var espacio = document.createElement("text")
-		espacio.innerHTML = ("&nbsp;")
+	$("[name = seleccionable]").click(function() {
+		let id = this.id
+		if (id == "ingNoSeleccionado") {
+			$(this).css({filter: "brightness(55%)", blur : "(2px)"})
+			$(this).attr("id","ingSeleccionado") 
+		} else {
+			$(this).css({filter: "brightness(100%)", blur : "(0px)"})
+			$(this).attr("id","ingNoSeleccionado") 
+		}
+	})	
+}
 
+//Error AJAX
 
-		//Label
-		var label = document.createElement("label")
-		label.innerHTML = (i.nombreCom + " (" + i.precio + "€)")
-
-		label.setAttribute("for", i.nombre)
-
-		//Salto linea
-		var p = document.createElement("p")
-
-		//Anadir elementos al DOM
-		document.getElementById("tamano").appendChild(input)
-		document.getElementById("tamano").appendChild(espacio)
-		document.getElementById("tamano").appendChild(label)
-		document.getElementById("tamano").appendChild(p)
-	}
-
-	//Ingredientes
-
-	for (let i of arrayIngredientes) {
-		var elemento = document.createElement("div")
-		elemento.setAttribute("id", "elemento")
-		//Input
-		var input = document.createElement("input")
-		input.setAttribute("type", "checkbox")
-		input.setAttribute("id", i.nombre)
-		input.setAttribute("name", "ingrediente")
-		input.setAttribute("value", i.precio)
-
-		//Espacio entre input y label
-		var espacio = document.createElement("text")
-		espacio.innerHTML = ("&nbsp;")
-
-		//Label
-		var label = document.createElement("label")
-		label.innerHTML = ("<h4>" + i.nombreCom + " (" + i.precio + "€)" + "</h4><br>")
-		label.setAttribute("for", i.nombre)
-
-		//Img
-		var img = document.createElement("img");
-		img.src = i.img;
-		label.setAttribute("for", i.nombre)
-		img.setAttribute("class", "scale-in-center")
-		//Texto img
-		var txtImg = document.createElement("div");
-		txtImg.innerHTML = i.nombreCom
-		txtImg.setAttribute("id", "txtImg")
-
-		//Anadir elementos al DOM
-		elemento.appendChild(input)
-		elemento.appendChild(espacio)
-		elemento.appendChild(label)
-		img.appendChild(txtImg)
-		label.appendChild(img)
-		document.getElementById("ingredientes").appendChild(elemento)
-		console.log(elemento)
-
-		//Evento seleccionar ingrediente
-		let sel = false
-		img.addEventListener("click", function () {
-			if (sel == false) {
-				this.setAttribute("style", "filter: brightness(55%) blur(2px);")
-				sel = true
-			} else {
-				this.removeAttribute("style", "filter: brightness(55%) blur(2px);")
-				sel = false
-			}
-		})
-	}
-
-	//Complementos
-
-	for (let i of arrayComplementos) {
-
-		//Input
-		var input = document.createElement("input")
-		input.setAttribute("type", "checkbox")
-		input.setAttribute("id", i.nombre)
-		input.setAttribute("name", "complemento")
-		input.setAttribute("value", i.precio)
-
-		//Espacio entre input y label
-		var espacio = document.createElement("text")
-		espacio.innerHTML = ("&nbsp;")
-
-		//Label
-		var label = document.createElement("label")
-		label.innerHTML = (i.nombreCom + " (" + i.precio + "€)")
-		label.setAttribute("for", i.nombre)
-
-		//Salto linea
-		var p = document.createElement("p")
-
-		//Anadir elementos al DOM
-		document.getElementById("complemento").appendChild(input)
-		document.getElementById("complemento").appendChild(espacio)
-		document.getElementById("complemento").appendChild(label)
-		document.getElementById("complemento").appendChild(p)
-	}
+function procesarError() {
+	alert("No encontrado!")
 }

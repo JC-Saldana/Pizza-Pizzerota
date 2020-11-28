@@ -5,11 +5,13 @@
 	<meta charset="UTF-8">
 	<title>Tarea 4 DWEC - Pizzeria Vivaldi</title>
 	<!-- JS -->
+	<script type="text/javascript" src="libs/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="js/onload.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/comprobacionesLimpieza.js"></script>
 	<script type="text/javascript" src="js/precioEnvio.js"></script>
 	<script type="text/javascript" src="js/cargarJSON.js"></script>
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/styles.css">
 </head>
@@ -19,7 +21,7 @@
 <body id="body" class="scale-in-center">
 	<div id="fondo">
 
-		<h1>¡¡¡¡Bienvenido a Pizzería Brave!!!!</h1><br>
+		<h1>¡¡¡Bienvenido a Pizzería Brave!!!</h1><br>
 
 		<!-- Formulario, envia si la funcion devuelve true -->
 
@@ -42,20 +44,14 @@
 				<input type="text" name="CodigoPostal" id="codPostal" class="datosInput"
 					placeholder=" ej: 28001"><br>
 				</div>
-				<div id="datosDerecha"></div>
+				<div id="datosDerecha">
 				<label for="Telefono" class="datosText">Telefono</label>
 				<input type="text" name="Telefono" id="telefono" class="datosInput" placeholder=" ej: 932556688"><br>
 
 				<label for="Email" class="datosText">Email</label>
 				<input type="text" name="Email" id="email" class="datosInput"
-					placeholder=" ej: email@gmail.com"><br><br><br><br><br>
-			</div>
-		
-			<!-- Ingredientes -->
-
-			<h2>Selecciona ingredientes:</h2><br>
-			<div id="ingCss">
-			<table id="ingredientes" class="placeholderIng"></table>
+				placeholder=" ej: email@gmail.com"><br><br><br><br><br>
+				</div>	
 			</div>
 			
 			<!-- Tamano -->
@@ -63,18 +59,25 @@
 			<div id="fila3">
 			<div class="tamano">
 				<h2>Tamaño: </h2><br>
-				<div id="tamano"></div>
+				<div id="tamanos"></div>
 			</div><hr>
 
 			<!-- Complementos -->
 			
 			<div class="complemento">
 				<h2>Complementos: </h2><br>	
-				<div id="complemento">
+				<div id="complementos">
 				</div>
 			</div>
 			</div>
 			
+			<!-- Ingredientes -->
+
+			<h2>Selecciona ingredientes:</h2><br>
+			<div id="ingCss">
+			<table id="ingredientes" class="placeholderIng"></table>
+			</div>
+
 			<!-- Boton de enviar -->
 			<div id="botCss"></div>
 			<input type="button" id="enviar" value="Realizar pedido" class="button">

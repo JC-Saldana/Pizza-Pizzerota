@@ -6,9 +6,9 @@ y en su caso, ir llamando a las otras funciones
 */
 
 function cargaActualiza() {
-    document.getElementById("btnBuscarAsincrono").value = "Refrescar"
-    AJAXjson()
+    $("#btnBuscarAsincrono").val("Refrescar")
 }
+
 function enviarPedido() {
     //Almacenamos en campos el resultado de la función
     campos = comprobarPrepararCampos()
@@ -27,13 +27,7 @@ function enviarPedido() {
             //y le pasamos el array de campos
             pedidoGenerado = sendFormulario(campos)
             //Cambiamos a la web de confirmación
-            window.location.replace("http://127.0.0.1:5500/receiveOrder.html");
-
-
-
+            window.location.replace("http://127.0.0.1:5500/receiveOrder.html")
         }
-
-
     }
-
 }

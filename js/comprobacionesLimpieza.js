@@ -10,29 +10,14 @@ comprobarlos, y después procederemos con los radio y checkbox
 
 function comprobarPrepararCampos() {
 
-    /*Primero almacenamos el formulario en una variable*/
-
-    let formularioRead = document.getElementById("formularioID");
-    console.log(formularioRead[0])
-
     // ************************ LECTURA DATOS ************************
 
-    /* Ahora, haciendo uso de la propiedad elements, buscamos
-    el value de las posiciones 0, 1, 2, 3, 4, que corresponden
-    a nombre, direccion, codPos, telefono y email*/
-    let nombreReadArr = formularioRead.elements[0].value
-    let direccionReadArr = formularioRead.elements[1].value
-    let codPosReadArr = formularioRead.elements[2].value
-    let telefonoReadArr = formularioRead.elements[3].value
-    let emailReadArr = formularioRead.elements[4].value
-
-    /*Pasamos dichos datos a String*/
-    let nombreStr = nombreReadArr.toString()
-    let direccionStr = direccionReadArr.toString()
-    let codPosStr = codPosReadArr.toString()
-    let telefonoStr = telefonoReadArr.toString()
-    let emailStr = emailReadArr.toString()
-
+    let nombreStr = $("#nombre").val()
+    let direccionStr = $("#direccion").val()
+    let codPosStr = $("#codPostal").val()
+    let telefonoStr = $("#telefono").val()
+    let emailStr = $("#email").val()
+   
     // ************************ LIMPIEZA DATOS ************************
 
     /*Utilizamos varias funciones auxiliares de limpieza
@@ -148,12 +133,12 @@ function comprobarPrepararCampos() {
 
     //Si no hay ningun botón marcado es que no se ha seleccionado ningun tamaño
 
-    var tam = document.getElementsByName("tamano")
-    for (var i = 0; i < tam.length; i++) {
-        if (tam[i].checked) {
-            testLocal = true
-        }
-    }
+    var tam = $("input[name=tamanos]:checked")
+
+    if (tam.length != 0) {
+        testLocal = true
+    } 
+
     if (valido == true && testLocal == true) {
         valido = true
     } else if (valido == true && testLocal == false) {
@@ -167,12 +152,12 @@ function comprobarPrepararCampos() {
 
     //Si no hay ningún ingrediente seleccionado, es incorrecto el formulario
 
-    var ing = document.getElementsByName("ingrediente")
-    for (var i = 0; i < ing.length; i++) {
-        if (ing[i].checked) {
-            testLocal = true
-        }
-    }
+    var ing = $("input[name=ingrediente]:checked")
+    
+    if (ing.length != 0) {
+        testLocal = true
+    } 
+
     if (valido == true && testLocal == true) {
         valido = true
     } else if (valido == true && testLocal == false) {
@@ -185,21 +170,19 @@ function comprobarPrepararCampos() {
     testLocal = false
 
     //Si no hay ningún ingrediente seleccionado, es incorrecto el formulario
+    
+    var comp = $("input[name=complementos]:checked")
+    
+    if (comp.length != 0) {
+        testLocal = true
+    } 
 
-    var ing = document.getElementsByName("complemento")
-    for (var i = 0; i < ing.length; i++) {
-        if (ing[i].checked) {
-            testLocal = true
-        }
-    }
     if (valido == true && testLocal == true) {
         valido = true
     } else if (valido == true && testLocal == false) {
         valido = false
         alert("Venga... ¡Pide un complemento!")
     }
-
-
 
     // ************************ RETURN RESULTADOS ************************
 
