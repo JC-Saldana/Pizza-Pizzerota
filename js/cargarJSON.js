@@ -47,19 +47,20 @@ function procesarRespuesta(datos) {
 	$.each(arrayComplementos,function(i, complemento){
       
 		console.log(complemento)
-        let boton = $(`<input type="radio" name=complementos id=${complemento.nombre} value=${complemento.precio}><label for=${complemento.nombre}>${complemento.nombreCom} (${complemento.precio}€)</label><p></p>`)
+        let boton = $(`<input type="checkbox" name=complementos id=${complemento.nombre} value=${complemento.precio}><label for=${complemento.nombre}>${complemento.nombreCom} (${complemento.precio}€)</label><p></p>`)
 		boton.appendTo("#complementos")
 
 	})
 	
 	$.each(arrayIngredientes,function(i, ingrediente){
      
- 		console.log(ingrediente)
-		let checkbox = $(`<div id=ing${i}><input type="checkbox" id=${ingrediente.nombre} name="ingrediente" value=${ingrediente.precio} >
-		<label for=${ingrediente.nombre}><h4>${ingrediente.nombreCom} (${ingrediente.precio}€)</h4><br>
-		<img src=${ingrediente.img} id="ingNoSeleccionado" class="scale-in-center" name="seleccionable"></label></div>`)
+		let checkbox = $(`<div id=ing${i}><input type="checkbox" id=${ingrediente.nombre} name="ingrediente" value=${ingrediente.precio}>
+		<label for=${ingrediente.nombre} id="ingNoSeleccionado" name="seleccionable"><h4>${ingrediente.nombreCom} (${ingrediente.precio}€)</h4><br>
+		<img src=${ingrediente.img} class="scale-in-center" ></label></div>`)
+		const txtImg = $(`<p id="txtImg"><img id="imgImg" src=img/check.png class="scale-in-center" ></p>`) 
+		txtImg.appendTo(checkbox)
 		checkbox.appendTo("#ingredientes")
-
+		console.log(ingredientes)
 	})
 
 	//CSS indica imagen seleccionada
@@ -67,10 +68,12 @@ function procesarRespuesta(datos) {
 	$("[name = seleccionable]").click(function() {
 		let id = this.id
 		if (id == "ingNoSeleccionado") {
-			$(this).css({filter: "brightness(55%)", blur : "(2px)"})
+			$(this).css({filter: "brightness(50%) blur(2px)"})
+			$(this).next("#txtImg").css({visibility: "visible"})
 			$(this).attr("id","ingSeleccionado") 
 		} else {
-			$(this).css({filter: "brightness(100%)", blur : "(0px)"})
+			$(this).css({filter: "brightness(100%) blur(0px)"})
+			$(this).next("#txtImg").css({visibility: "hidden"})
 			$(this).attr("id","ingNoSeleccionado") 
 		}
 	})	

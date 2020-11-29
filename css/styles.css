@@ -44,7 +44,11 @@ input[type=text] {
 	background-color: #AEE2CC;
 	padding: 5px 10px;
 	transition: width 0.2s ease-in-out;
-  }
+}
+
+input[type="checkbox"][name="ingrediente"]{
+	display: none;
+}
 
 .button {
 	font-family: 'Rockwell', sans-serif;
@@ -138,12 +142,13 @@ img:hover {
 
 #ingCss {
 	overflow-y: scroll;
-	max-height: 320px;
+	max-height: 350px;
 	width: 90%;
-	margin: auto;
+	margin: auto auto 20px;
+	position: relative;
 }
 #ingredientes {
-	margin: 20px;
+	margin: 5px;
 	display: flex ;
 	flex-direction: row ;
 	flex-wrap: wrap ;
@@ -154,6 +159,15 @@ img:hover {
 }
 #ingredientes * {
 	width: 200px;
+}
+#txtImg {
+  	transform: translate(0%, -92px);
+	color: white;
+	visibility: hidden;
+	pointer-events: none;
+}
+#imgImg{
+	width: 30px;
 }
 
 /* Complementos */
