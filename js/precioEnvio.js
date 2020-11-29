@@ -67,7 +67,7 @@ function sendFormulario(camposArray) {
                     parametrosIngredientes += '"' + formularioRead.elements[i].id + '", '
                     console.log(parametrosIngredientes)
 
-                } else if (formularioRead.elements[i].name == "complemento") {
+                } else if (formularioRead.elements[i].name == "complementos") {
 
                     parametrosComplementos += '"' + formularioRead.elements[i].id + '", '
                     console.log(parametrosComplementos)

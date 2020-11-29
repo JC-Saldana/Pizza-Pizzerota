@@ -11,7 +11,7 @@ function cargaActualiza() {
 
 function enviarPedido() {
     //Almacenamos en campos el resultado de la función
-    campos = comprobarPrepararCampos()
+    campos = comprobarFormulario()
     //Si no nos ha devuelto error es que el fomulario
     //era correcto:
     if (campos != "error") {
