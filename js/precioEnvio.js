@@ -19,7 +19,7 @@ function sendFormulario(camposArray) {
     let parametros = '{'
 
     let idPedido = Math.floor((Math.random() * 100000) + 1)
-    parametros += '"id" : "' + idPedido + '",'
+    parametros += '"id" : "' + idPedido + '",' 
 
     /*Primeramente, añadimos estas variables
     que ya teníamos preparadas, que hemos obtenido
@@ -71,8 +71,8 @@ function sendFormulario(camposArray) {
 
                     parametrosComplementos += '"' + formularioRead.elements[i].id + '", '
                     console.log(parametrosComplementos)
-                //Si se trata del tamaño, procedemos directamente,
-                //y lo agregamos ya a parametros
+                    //Si se trata del tamaño, procedemos directamente,
+                    //y lo agregamos ya a parametros
                 } else {
 
                     console.log(formularioRead.elements[i].text)
@@ -106,15 +106,14 @@ function sendFormulario(camposArray) {
     //Parseamos los parametros a JSON
     let parametrosJSON = JSON.parse(parametros)
 
-    console.log(parametrosJSON)
 
 
-    let nombreArchivo = "Pedido-"+idPedido+".json"
+    let nombreArchivo = "Pedido-" + idPedido + ".json"
     //Llamamos a la función descargarArchivo y le pasamos los parámetros necesarios
-    
+
     descargaArchivo(JSON.stringify(parametrosJSON), nombreArchivo, "json")
 
-    
+    return parametros
 }
 
 /*Esta es una función aucilizar que utilizaremos

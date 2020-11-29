@@ -6,7 +6,6 @@
 	<title>Tarea 4 DWEC - Pizzeria Vivaldi</title>
 	<!-- JS -->
 	<script type="text/javascript" src="libs/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="js/onload.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/comprobarFormulario.js"></script>
 	<script type="text/javascript" src="js/limpiarCampos.js"></script>
@@ -26,57 +25,84 @@
 
 		<!-- Formulario, envia si la funcion devuelve true -->
 
-		<form id="formularioID" name="formulario" id="formularioID"
-			action="http://127.0.0.1:5500/receiveOrder.html" method="POST">
-			
+		<form id="formularioID" name="formulario" id="formularioID" action="http://127.0.0.1:5500/receiveOrder.html"
+			method="POST">
+
 			<!-- Datos -->
 			<h2>Facilítanos tus datos: </h2><br>
+
 			<div id="divDatosID">
-				
+
 				<div id="datosIzquierda">
-				<label for="Nombre" class="datosText">Nombre</label>
-				<input type="text" name="Nombre" id="nombre" class="datosInput" placeholder=" ej: Peppe Pizzo"><br>
+					<table id="tablaDatosIz">
+						<tr>
+							<td class="tdDescCamp">Nombre</td>
+							<td class="tdInputCamp"><input type="text" name="Nombre" id="nombre" class="datosInput"
+									placeholder=" ej: Peppe Pizzo">
+							</td>
 
-				<label for="Direccion" class="datosText">Direccion</label>
-				<input type="text" name="Direccion" id="direccion" class="datosInput"
-					placeholder=" ej: Calle Pizza"><br>
+						</tr>
 
-				<label for="CodigoPostal" class="datosText">Código Postal</label>
-				<input type="text" name="CodigoPostal" id="codPostal" class="datosInput"
-					placeholder=" ej: 28001"><br>
+						<tr>
+							<td class="tdDescCamp">Dirección</td>
+							<td class="tdInputCamp"><input type="text" name="Direccion" id="direccion"
+									class="datosInput" placeholder=" ej: Calle Patata, Nº4, 1ºA">
+							</td>
+
+						</tr>
+						<tr>
+							<td class="tdDescCamp">Código Postal</td>
+							<td class="tdInputCamp"><input type="text" name="CodigoPostal" id="codPostal"
+									class="datosInput" placeholder=" ej: 28001">
+							</td>
+						</tr>
+
+					</table>
 				</div>
 				<div id="datosDerecha">
-				<label for="Telefono" class="datosText">Telefono</label>
-				<input type="text" name="Telefono" id="telefono" class="datosInput" placeholder=" ej: 932556688"><br>
 
-				<label for="Email" class="datosText">Email</label>
-				<input type="text" name="Email" id="email" class="datosInput"
-				placeholder=" ej: email@gmail.com"><br><br><br><br><br>
-				</div>	
+					<table id="tablaDatosDe">
+						<tr>
+							<td class="tdDescCamp">Teléfono</td>
+							<td class="tdInputCamp"><input type="text" name="Telefono" id="telefono" class="datosInput"
+									placeholder=" ej: 932556688"> 
+							</td>
+						</tr>
+						<tr>
+							<td class="tdDescCamp">Email</td>
+							<td class="tdInputCamp"><input type="text" name="Email" id="email" class="datosInput"
+									placeholder=" ej: email@gmail.com">
+							</td>
+						</tr>
+
+
+					</table>
+				</div>
+
 			</div>
-			
+
 			<!-- Tamano -->
-
 			<div id="fila3">
-			<div class="tamano">
-				<h2>Tamaño: </h2><br>
-				<div id="tamanos"></div>
-			</div><hr>
+				<div class="tamano">
+					<h2>Tamaño: </h2><br>
+					<div id="tamanos"></div>
+				</div>
+				<hr>
 
-			<!-- Complementos -->
-			
-			<div class="complemento">
-				<h2>Complementos: </h2><br>	
-				<div id="complementos">
+				<!-- Complementos -->
+
+				<div class="complemento">
+					<h2>Complementos: </h2><br>
+					<div id="complementos">
+					</div>
 				</div>
 			</div>
-			</div>
-			
+
 			<!-- Ingredientes -->
 
 			<h2>Selecciona ingredientes:</h2><br>
 			<div id="ingCss">
-			<table id="ingredientes" class="placeholderIng"></table>
+				<table id="ingredientes" class="placeholderIng"></table>
 			</div>
 
 			<!-- Boton de enviar -->

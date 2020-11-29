@@ -21,7 +21,7 @@
       {
         "nombre": "bacon",
         "nombreCom": "Crispy Bacon",
-        "precio": 3,
+        "precio": 3, 
         "img": "./img/bacon.jpg"
       },
       {

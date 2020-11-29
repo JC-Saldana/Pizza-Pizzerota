@@ -1,4 +1,8 @@
-function devuelveCamposLimpios(){
+/*Este es un nuevo fichero, que se encarga de realizar la lectura de los datos
+de input de texto del formulario, así como ir limpiándolos por medio de las funciones
+auxiliares*/
+
+function devuelveCamposLimpios() {
 
     // ************************ LECTURA DATOS ************************
 
@@ -6,8 +10,8 @@ function devuelveCamposLimpios(){
     let direccionStr = $("#direccion").val()
     let codPosStr = $("#codPostal").val()
     let telefonoStr = $("#telefono").val()
-    let emailStr = $("#email").val()
-   
+    let emailStr = $("#email").val() 
+
     // ************************ LIMPIEZA DATOS ************************
 
     /*Utilizamos varias funciones auxiliares de limpieza
@@ -37,7 +41,8 @@ function devuelveCamposLimpios(){
     //antes de la comprobación
     console.log(nombreOK + direccionOK + codPosOK + emailOK + telefonoStr)
 
-
+    //Creamos un array de campos, almacenamos los datos
+    //y los devolvemos vía return
     let campos = []
     campos[0] = nombreOK
     campos[1] = direccionOK

@@ -8,8 +8,16 @@ limpiar primeramente los campos de introducción de texto,
 comprobarlos, y después procederemos con los radio y checkbox
 */
 
+/*Dicha función principal se encarga de ir llamando a las distintas
+funciones, primeramente, almacenando los datos limpios (que son limpiados
+por medio de las funciones contenidas en el fichero limpiarCampos.js
+Después, se van encadenando las comprobaciones, y en caso de ser correctas
+todasm se devuelven los campos limpios, que serán pasados desde el fichero main.js
+a las funciones de cálculo y envío del formulario
+*/ 
+
 function comprobarFormulario() {
-    
+
     let valor = "error"
 
     campos = devuelveCamposLimpios()
@@ -40,8 +48,8 @@ function comprobarCampos(camposLimpios) {
     let nombreOK = camposLimpios[0]
     let direccionOK = camposLimpios[1]
     let codPosOK = camposLimpios[2]
-    let telefonoOK  = camposLimpios[3]
-    let emailOK  = camposLimpios[4]
+    let telefonoOK = camposLimpios[3]
+    let emailOK = camposLimpios[4]
     //Este console.log nos permite ver como han quedado procesados
     //antes de la comprobación
 
@@ -97,7 +105,7 @@ function comprobarCampos(camposLimpios) {
         //Si la comprobación da correta, almacenamos los campos limpios en un array
         //y lo devolvemos
         validoCampos = true;
-     
+
     } else {
         /*Comprobamos uno por uno, y en su caso, informamos
         al usuario del error, para que pueda corregirlo*/
@@ -135,7 +143,7 @@ function comprobarTamano() {
 
     //Si no hay ningun botón marcado es que no se ha seleccionado ningun tamaño
 
-    let tam = $("input[name=tamanos]:checked")
+    let tam = $("input[name=tamano]:checked")
 
     if (tam.length != 0) {
         validoTam = true

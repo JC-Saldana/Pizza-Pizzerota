@@ -5,6 +5,16 @@ y esta función auxiliar que se encargará de almacenar los datos devueltos
 y en su caso, ir llamando a las otras funciones
 */
 
+/*Treaemos aquí la parte del onload del HTML, 
+y hacemos uso de jQuery*/
+$(document).ready(
+    function () {
+        $("#enviar").click(enviarPedido)
+        $("#btnBuscarAsincrono").click(cargaActualiza)
+        $("#btnBuscarAsincrono").click(AJAXjson) 
+    }
+)
+/*Esta función se encarga de reemplazar "Pedir carta" por "Refrescar"*/
 function cargaActualiza() {
     $("#btnBuscarAsincrono").val("Refrescar")
 }
@@ -26,8 +36,11 @@ function enviarPedido() {
             //llamamos a la función sendFormulario
             //y le pasamos el array de campos
             pedidoGenerado = sendFormulario(campos)
+            console.log(pedidoGenerado)
+
             //Cambiamos a la web de confirmación
             window.location.replace("http://127.0.0.1:5500/receiveOrder.html")
+
         }
     }
 }
